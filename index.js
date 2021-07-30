@@ -4,10 +4,11 @@ async function getData() {
         "https://covid-api.mmediagroup.fr/v1/cases?country=India"
     );
     let data = await res.json();
-  
-//changing object to array
-    let arr = Object.entries(data) 
+ 
+
+    let arr = Object.entries(data)
     console.log(arr);
+    
     foo(arr);
 }
 
@@ -21,21 +22,21 @@ function foo(arr) {
     <p>Total Death: ${overall[1].deaths}</p>
                     <p>Total Recovered: ${overall[1].recovered}</p>
                     `
-    for (let i = 1; i <= arr.length; i++) {
+    for (let i = 1; i < arr.length; i++) {
         var body = document.getElementById('state')
         let a = arr[i]
         // let b = a[1]
         // console.log(a);
         // a[0] + " "  + "\n"+'confirmed: '+ a[1].confirmed 
         body.innerHTML += ` <div class="col-sm-3">
-        <div class="box-part text-left">
-            <div class="title">
-                <h4>${a[0]} </h4>
-                <div class="text">
+        <div class="box-part text-left" id="container">
+            <div class="title" id="card">
+            <div id="front"><h4>${a[0]}</h4></div>
+                <div class="text" id="back">
                     <span> Confirmed Cases: ${a[1].confirmed}</span>
                     <p><span>Total Death: </span>${a[1].deaths}</p>
                     <p><span>Total Recovered: </span>${a[1].recovered}</p>
-                    <p><span>Last Updated: </span>${a[1].updated}</p>
+                    <p><span>Last Updated: </span>${new Date (a[1].updated).toLocaleString()}</p>
                 </div>
 
             </div>
@@ -46,8 +47,4 @@ function foo(arr) {
 
     
 }
-
-
-
-
 
