@@ -57,4 +57,8 @@ body {
 span{
    font-weight: 630;
 }
-
+h2
+{
+    text-align: center;
+    margin: 30px 0px 10px -50px;
+}
